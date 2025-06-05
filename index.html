@@ -1,422 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barack Obama - A Legacy of Leadership | International Leader</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Barack Obama - A Legacy of Leadership | International Leader</title>
+  <style>
+    body {
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9f9f9;
+      padding: 0;
+      margin: 0;
+    }
 
-    <meta name="description" content="A comprehensive look at the life, achievements, and legacy of the 44th U.S. President Barack Obama">
-    <meta name="keywords" content="Barack Obama, US President, Nobel Prize, Affordable Care Act, Obama achievements">
+    header {
+      background: #0a3161;
+      color: white;
+      text-align: center;
+      height: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    header h1 {
+      font-family: 'Merriweather', serif;
+      font-size: 1.5rem;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    .subtitle {
+      font-size: 0.8rem;
+      opacity: 0.9;
+      margin: 0;
+    }
 
-    <style>
-        /* CSS Reset for consistent styling across browsers */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    marquee.announcement-bar {
+      background-color: #B22234;
+      color: white;
+      height: 60px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      line-height: 60px;
+    }
 
-        /* Base styles with improved typography and color scheme */
-        body {
-            font-family: 'Open Sans', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
-            padding: 0;
-            margin: 0;
-        }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
 
-        /* Header styles with presidential color scheme */
-        header {
-            background: linear-gradient(135deg, #0a3161, #003366);
-            color: white;
-            /* MINIMIZED HEADER: Reduced padding */
-            padding: 1rem 0; /* Reduced from 2rem */
-            text-align: center;
-            height: auto;
-            position: relative;
-            overflow: hidden;
-        }
+    section {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #eee;
+    }
 
-        /* Main title styling */
-        h1 {
-            font-family: 'Merriweather', serif;
-            /* MINIMIZED HEADER: Reduced font size */
-            font-size: 2rem; /* Reduced from 2.5rem */
-            /* MINIMIZED HEADER: Reduced margin-bottom */
-            margin-bottom: 0.2rem; /* Reduced from 0.5rem */
-            color: #003366; /* Keeping white for visibility */
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-        }
+    h2 {
+      font-family: 'Merriweather', serif;
+      color: #003366;
+      margin: 2rem 0 1rem;
+      font-size: 2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
 
-        /* Subtitle styling */
-        .subtitle {
-            /* MINIMIZED HEADER: Reduced font size */
-            font-size: 1rem; /* Reduced from 1.2rem */
-            opacity: 0.9;
-            /* MINIMIZED HEADER: Reduced margin-bottom */
-            margin-bottom: 0.5rem; /* Reduced from 1rem */
-        }
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background: #B22234;
+    }
 
+    h3 {
+      font-family: 'Merriweather', serif;
+      color: #003366;
+      margin: 1.5rem 0 1rem;
+      font-size: 1.5rem;
+    }
 
-        /* Main content container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
+    p {
+      margin-bottom: 1.2rem;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
 
-        /* Section styling */
-        section {
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #eee;
-        }
+    .img-container {
+      margin: 1.5rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 1.5rem;
+    }
 
-        /* Section headings */
-        h2 {
-            font-family: 'Merriweather', serif;
-            color: #003366; /* Dark blue */
-            margin: 2rem 0 1rem;
-            font-size: 2rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
+    .img-card {
+      flex: 1 1 300px;
+      max-width: 100%;
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
 
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 80px;
-            height: 3px;
-            background: #B22234; /* Red from US flag */
-        }
+    .img-card:hover {
+      transform: translateY(-5px);
+    }
 
-        h3 {
-            font-family: 'Merriweather', serif;
-            color: #003366;
-            margin: 1.5rem 0 1rem;
-            font-size: 1.5rem;
-        }
+    .img-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
 
-        /* Paragraph styling */
-        p {
-            margin-bottom: 1.2rem;
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
+    .img-caption {
+      background-color: #f8f8f8;
+      padding: 0.8rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
+    }
 
-        /* Image styling */
-        .img-container {
-            margin: 1.5rem 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            gap: 1.5rem;
-        }
+    ol, ul {
+      margin-left: 2rem;
+      margin-bottom: 1.5rem;
+    }
 
-        .img-card {
-            flex: 1 1 300px;
-            max-width: 100%;
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
-        }
+    li {
+      margin-bottom: 0.5rem;
+    }
 
-        .img-card:hover {
-            transform: translateY(-5px);
-        }
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
 
-        .img-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+    footer p {
+      margin-bottom: 0;
+      font-size: 0.9rem;
+    }
 
-        .img-caption {
-            background-color: #f8f8f8;
-            padding: 0.8rem;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #555;
-        }
+    a {
+      color: #0a3161;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
 
-        /* List styling */
-        ol, ul {
-            margin-left: 2rem;
-            margin-bottom: 1.5rem;
-        }
+    a:hover {
+      color: #B22234;
+      text-decoration: underline;
+    }
 
-        li {
-            margin-bottom: 0.5rem;
-        }
+    blockquote {
+      border-left: 4px solid #B22234;
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: #555;
+    }
 
-        /* Marquee replacement - modern announcement bar */
-        .announcement-bar {
-            background-color: #B22234;
-            color: white;
-            padding: 0.8rem;
-            text-align: center;
-            font-weight: bold;
-            margin-bottom: 2rem;
-            /* For the marquee effect, if needed, you'd add animation and overflow */
-            /* animation: pulse 2s infinite; */ /* Keep pulse for the current effect */
-            white-space: nowrap; /* Ensures text stays on one line */
-            overflow: hidden;     /* Hides overflowing text */
-            position: relative;
-        }
+    .highlight-box {
+      background-color: #f0f7ff;
+      border-left: 4px solid #0a3161;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 5px 5px 0;
+    }
 
-        /* Optional: Add a simple scrolling animation for the announcement bar */
-        .announcement-bar span {
-            display: inline-block;
-            padding-left: 100%; /* Starts the text off-screen to the right */
-            animation: scroll-text 15s linear infinite; /* Adjust duration as needed */
-        }
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      .subtitle {
+        font-size: 0.9rem;
+      }
+      header {
+        height: auto;
+        padding: 1rem 0;
+      }
+      .container {
+        padding: 1rem;
+      }
+      .img-container {
+        flex-direction: column;
+      }
+    }
 
-        @keyframes scroll-text {
-            0%   { transform: translate(0, 0); }
-            100% { transform: translate(-100%, 0); } /* Moves text to the left off-screen */
-        }
+    @media (min-width: 1024px) {
+      .early-life .early-life-content {
+        display: flex;
+        gap: 2rem;
+        align-items: flex-start;
+      }
 
-        @keyframes pulse {
-            0% { opacity: 0.9; }
-            50% { opacity: 1; }
-            100% { opacity: 0.9; }
-        }
+      .early-life .early-life-content .img-container {
+        flex: 0 0 40%;
+        margin: 0;
+        display: block;
+      }
 
-        /* Footer styling */
-        footer {
-            background-color: #003366;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
-        }
+      .early-life .early-life-content .img-container .img-card {
+        max-width: 100%;
+      }
 
-        footer p {
-            margin-bottom: 0;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive design adjustments */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8rem; /* Further minimize for small screens */
-            }
-            .subtitle {
-                font-size: 0.9rem; /* Further minimize for small screens */
-            }
-            header {
-                padding: 0.8rem 0; /* Further minimize padding for small screens */
-            }
-
-            .container {
-                padding: 1rem;
-            }
-
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav li {
-                margin: 0.5rem 0;
-            }
-
-            .img-container {
-                flex-direction: column;
-            }
-        }
-
-        /* Link styling */
-        a {
-            color: #0a3161;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        a:hover {
-            color: #B22234;
-            text-decoration: underline;
-        }
-
-        /* Blockquote styling */
-        blockquote {
-            border-left: 4px solid #B22234;
-            padding-left: 1.5rem;
-            margin: 1.5rem 0;
-            font-style: italic;
-            color: #555;
-        }
-
-        /* Highlight box */
-        .highlight-box {
-            background-color: #f0f7ff;
-            border-left: 4px solid #0a3161;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0 5px 5px 0;
-        }
-    </style>
+      .early-life .early-life-content .text-content {
+        flex: 1 1 55%;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>BARACK HUSSEIN OBAMA</h1>
-            <p class="subtitle">The 44th President of the United States | 2009-2017</p>
+
+  <header>
+    <h1>BARACK HUSSEIN OBAMA</h1>
+    <p class="subtitle">The 44th President of the United States | 2009-2017</p>
+  </header>
+
+  <marquee class="announcement-bar" behavior="scroll" direction="left">
+    YES WE TRUST! YES WE TRUST! YES WE TRUST! YES WE TRUST!
+  </marquee>
+
+  <main class="container">
+
+    <section class="early-life">
+      <h2>The Journey of Barack Obama</h2>
+      <div class="early-life-content">
+        <div class="img-container">
+          <div class="img-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg" alt="President Barack Obama">
+            <div class="img-caption">President Barack Obama in the Oval Office</div>
+          </div>
         </div>
-    </header>
+        <div class="text-content">
+          <p>Barack Hussein Obama II was born on August 4, 1961, in Honolulu, Hawaii. He made history as the first African American to be elected president of the United States, serving from January 20, 2009, to January 20, 2017.</p>
+          <div class="highlight-box">
+            <p>Obama's father, Barack Obama Sr., was a Kenyan economist who studied in the U.S. on a scholarship. His mother, Ann Dunham, was an American anthropologist from Kansas. This unique multicultural background would later shape Obama's worldview and political perspective.</p>
+          </div>
+          <p>Obama attended Occidental College in Los Angeles before transferring to Columbia University in New York, where he graduated in 1983 with a degree in political science. After working as a community organizer in Chicago, he earned his law degree from Harvard in 1991, where he made history as the first Black president of the prestigious Harvard Law Review.</p>
+          <blockquote>
+            "Change will not come if we wait for some other person or some other time. We are the ones we've been waiting for. We are the change that we seek."
+          </blockquote>
+        </div>
+      </div>
+    </section>
 
-    <div class="announcement-bar">
-        <span><i class="fas fa-quote-left"></i> YES WE CAN! YES WE CAN! YES WE CAN! <i class="fas fa-quote-right"></i></span>
-    </div>
+    <section class="family">
+      <h2>The Obama Family</h2>
+      <div class="img-container">
+        <div class="img-card">
+          <img src="obamafamily.jpeg" alt="The Obama Family">
+          <div class="img-caption">The Obama Family - Michelle, Malia, Sasha, and Barack</div>
+        </div>
+      </div>
+      <p>In 1989, Barack met Michelle Robinson while working at a Chicago law firm. They married on October 3, 1992, and had two daughters:</p>
+      <ul>
+        <li><strong>Malia Ann Obama</strong> - Born July 4, 1998</li>
+        <li><strong>Sasha Obama</strong> - Born June 10, 2001</li>
+      </ul>
+      <p>Sasha Obama holds the distinction of being the youngest child to live in the White House since John F. Kennedy Jr. The Obama family became beloved figures during their time in the White House, known for their warmth and relatability.</p>
+    </section>
 
-    <main class="container">
-        <section id="early-life">
-            <h2>The Journey of Barack Obama</h2>
+    <section class="achievements">
+      <h2>Major Achievements</h2>
+      <div class="img-container">
+        <div class="img-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Obama_signs_health_care_bill.jpg" alt="Obama signing the Affordable Care Act">
+          <div class="img-caption">President Obama signing the Affordable Care Act into law</div>
+        </div>
+      </div>
+      <h3>1. Affordable Care Act (Obamacare)</h3>
+      <ol>
+        <li>Expanded health insurance to over 20 million Americans</li>
+        <li>Banned insurers from denying coverage for pre-existing conditions</li>
+        <li>Allowed young adults to stay on parents' insurance until age 26</li>
+      </ol>
+      <h3>2. Economic Recovery</h3>
+      <ol>
+        <li>Took office during the 2008 financial crisis</li>
+        <li>Oversaw 75 consecutive months of job growth</li>
+        <li>Signed the American Recovery and Reinvestment Act to boost the economy</li>
+        <li>Auto industry rescue saved an estimated 1 million jobs</li>
+      </ol>
+      <h3>3. Climate Change Leadership</h3>
+      <ol>
+        <li>Signed the Paris Climate Agreement in 2015</li>
+        <li>Implemented the Clean Power Plan to reduce carbon emissions</li>
+        <li>Invested $90 billion in clean energy initiatives</li>
+        <li>Set new fuel efficiency standards for vehicles</li>
+      </ol>
+      <h3>4. Foreign Policy Milestones</h3>
+      <ol>
+        <li>Ordered the mission that killed Osama bin Laden in 2011</li>
+        <li>Negotiated the Iran nuclear deal in 2015</li>
+        <li>Restored diplomatic relations with Cuba after 50+ years</li>
+        <li>Pivoted U.S. foreign policy toward Asia with the "Asia Pivot" strategy</li>
+      </ol>
+    </section>
 
-            <div class="img-container">
-                <div class="img-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg" alt="President Barack Obama">
-                    <div class="img-caption">President Barack Obama in the Oval Office</div>
-                </div>
-            </div>
+    <section class="awards">
+      <h2>Notable Awards and Honors</h2>
+      <div class="img-container">
+        <div class="img-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Barack_Obama_with_Nobel_Prize.jpg" alt="Obama with Nobel Peace Prize">
+          <div class="img-caption">President Obama receiving the Nobel Peace Prize in 2009</div>
+        </div>
+        <div class="img-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Obama_grammy.jpg" alt="Obama with Grammy Awards">
+          <div class="img-caption">Obama won two Grammy Awards for his audiobooks</div>
+        </div>
+      </div>
+      <ol>
+        <li><strong>Nobel Peace Prize (2009)</strong> - Awarded for his extraordinary efforts to strengthen international diplomacy</li>
+        <li><strong>Grammy Awards (2006, 2008)</strong> - Won for Best Spoken Word Album for his audiobooks</li>
+        <li><strong>Time Magazine's Person of the Year (2008, 2012)</strong> - Recognized as the most influential person of the year</li>
+        <li><strong>Honorary Degrees</strong> - Received from Harvard University, Notre Dame, Howard University, Morehouse College, and others</li>
+        <li><strong>Profile in Courage Award (2017)</strong> - From the JFK Library Foundation for his political courage</li>
+      </ol>
+      <p>For more images of Barack Obama's Grammy Awards, visit:
+        <a href="https://www.bing.com/images/search?q=barack+obama+grammy" target="_blank" rel="noopener noreferrer">
+          Barack Obama's Grammy Awards
+        </a>
+      </p>
+    </section>
 
-            <p>Barack Hussein Obama II was born on August 4, 1961, in Honolulu, Hawaii. He made history as the first African American to be elected president of the United States, serving from January 20, 2009, to January 20, 2017.</p>
+    <section class="gallery">
+      <h2>Gallery</h2>
+      <div class="img-container">
+        <div class="img-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Official_portrait_of_President_Obama.jpg" alt="Official portrait of President Obama">
+          <div class="img-caption">Official Presidential Portrait</div>
+        </div>
+        <div class="img-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Obama_family_portrait_2011.jpg" alt="Obama family portrait">
+          <div class="img-caption">The Obama Family Portrait (2011)</div>
+        </div>
+        <div class="img-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/President_Barack_Obama_2012_portrait_crop.jpg" alt="Obama 2012 portrait">
+          <div class="img-caption">President Obama in 2012</div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-            <div class="highlight-box">
-                <p>Obama's father, Barack Obama Sr., was a Kenyan economist who studied in the U.S. on a scholarship. His mother, Ann Dunham, was an American anthropologist from Kansas. This unique multicultural background would later shape Obama's worldview and political perspective.</p>
-            </div>
+  <footer>
+    <p>© 2025 Created by Julia Wanjugu, Stephen Mwanduka, Prim-mary Wangechi, Allan Gatimu, Jesse Kioko and Vincent Kipkech, Simon Ngugi.</p>
+    <p>A tribute to the legacy of President Barack Obama</p>
+  </footer>
 
-            <p>Obama attended Occidental College in Los Angeles before transferring to Columbia University in New York, where he graduated in 1983 with a degree in political science. After working as a community organizer in Chicago, he earned his law degree from Harvard in 1991, where he made history as the first Black president of the prestigious Harvard Law Review.</p>
-
-            <blockquote>
-                "Change will not come if we wait for some other person or some other time. We are the ones we've been waiting for. We are the change that we seek."
-            </blockquote>
-        </section>
-
-        <section id="family">
-            <h2>The Obama Family</h2>
-
-            <div class="img-container">
-                <div class="img-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Official_portrait_of_Barack_Obama_family.jpg" alt="The Obama Family">
-                    <div class="img-caption">The Obama Family - Michelle, Malia, Sasha, and Barack</div>
-                </div>
-            </div>
-
-            <p>In 1989, Barack met Michelle Robinson while working at a Chicago law firm. They married on October 3, 1992, and had two daughters:</p>
-
-            <ul>
-                <li><strong>Malia Ann Obama</strong> - Born July 4, 1998</li>
-                <li><strong>Sasha Obama</strong> - Born June 10, 2001</li>
-            </ul>
-
-            <p>Sasha Obama holds the distinction of being the youngest child to live in the White House since John F. Kennedy Jr. The Obama family became beloved figures during their time in the White House, known for their warmth and relatability.</p>
-        </section>
-
-        <section id="achievements">
-            <h2>Major Achievements</h2>
-
-            <div class="img-container">
-                <div class="img-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Obama_signs_health_care_bill.jpg" alt="Obama signing the Affordable Care Act">
-                    <div class="img-caption">President Obama signing the Affordable Care Act into law</div>
-                </div>
-            </div>
-
-            <h3>1. Affordable Care Act (Obamacare)</h3>
-            <ol>
-                <li>Expanded health insurance to over 20 million Americans</li>
-                <li>Banned insurers from denying coverage for pre-existing conditions</li>
-                <li>Allowed young adults to stay on parents' insurance until age 26</li>
-            </ol>
-
-            <h3>2. Economic Recovery</h3>
-            <ol>
-                <li>Took office during the 2008 financial crisis</li>
-                <li>Oversaw 75 consecutive months of job growth</li>
-                <li>Signed the American Recovery and Reinvestment Act to boost the economy</li>
-                <li>Auto industry rescue saved an estimated 1 million jobs</li>
-            </ol>
-
-            <h3>3. Climate Change Leadership</h3>
-            <ol>
-                <li>Signed the Paris Climate Agreement in 2015</li>
-                <li>Implemented the Clean Power Plan to reduce carbon emissions</li>
-                <li>Invested $90 billion in clean energy initiatives</li>
-                <li>Set new fuel efficiency standards for vehicles</li>
-            </ol>
-
-            <h3>4. Foreign Policy Milestones</h3>
-            <ol>
-                <li>Ordered the mission that killed Osama bin Laden in 2011</li>
-                <li>Negotiated the Iran nuclear deal in 2015</li>
-                <li>Restored diplomatic relations with Cuba after 50+ years</li>
-                <li>Pivoted U.S. foreign policy toward Asia with the "Asia Pivot" strategy</li>
-            </ol>
-        </section>
-
-        <section id="awards">
-            <h2>Notable Awards and Honors</h2>
-
-            <div class="img-container">
-                <div class="img-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Barack_Obama_with_Nobel_Prize.jpg" alt="Obama with Nobel Peace Prize">
-                    <div class="img-caption">President Obama receiving the Nobel Peace Prize in 2009</div>
-                </div>
-                <div class="img-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Obama_grammy.jpg" alt="Obama with Grammy Awards">
-                    <div class="img-caption">Obama won two Grammy Awards for his audiobooks</div>
-                </div>
-            </div>
-
-            <ol>
-                <li><strong>Nobel Peace Prize (2009)</strong> - Awarded for his extraordinary efforts to strengthen international diplomacy</li>
-                <li><strong>Grammy Awards (2006, 2008)</strong> - Won for Best Spoken Word Album for his audiobooks</li>
-                <li><strong>Time Magazine's Person of the Year (2008, 2012)</strong> - Recognized as the most influential person of the year</li>
-                <li><strong>Honorary Degrees</strong> - Received from Harvard University, Notre Dame, Howard University, Morehouse College, and others</li>
-                <li><strong>Profile in Courage Award (2017)</strong> - From the JFK Library Foundation for his political courage</li>
-            </ol>
-
-            <p>For more images of Barack Obama's Grammy Awards, visit:
-                <a href="https://www.bing.com/images/search?q=barack+obama+grammy" target="_blank" rel="noopener noreferrer">
-                    Barack Obama's Grammy Awards <i class="fas fa-external-link-alt"></i>
-                </a>
-            </p>
-        </section>
-
-        <section id="gallery">
-            <h2>Gallery</h2>
-
-            <div class="img-container">
-                <div class="img-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Official_portrait_of_President_Obama.jpg" alt="Official portrait of President Obama">
-                    <div class="img-caption">Official Presidential Portrait</div>
-                </div>
-                <div class="img-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Obama_family_portrait_2011.jpg" alt="Obama family portrait">
-                    <div class="img-caption">The Obama Family Portrait (2011)</div>
-                </div>
-                <div class="img-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/President_Barack_Obama_2012_portrait_crop.jpg" alt="Obama 2012 portrait">
-                    <div class="img-caption">President Obama in 2012</div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>© 2025 Created by Julia Wanjugu, Stephen Mwanduka, Prim-mary Wangechi, Allan Gatimu, Jesse Kioko and Vincent Kipkech,Simon Ngugi.</p>
-        <p>A tribute to the legacy of President Barack Obama</p>
-    </footer>
 </body>
 </html>

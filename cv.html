@@ -1,271 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Viewer - index.html</title>
-    <!-- Prism.js for syntax highlighting -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-okaidia.min.css" rel="stylesheet" />
-    <style>
-        body {
-            font-family: 'Courier New', monospace;
-            margin: 0;
-            padding: 0;
-            background-color: #1e1e1e;
-            color: #f8f8f2;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        .container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            max-width: 100%;
-            padding: 20px;
-            box-sizing: border-box;
-            overflow: hidden;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        h1 {
-            color: #f8f8f2;
-            margin: 0;
-            padding: 0;
-            font-size: 1.5rem;
-        }
-        .zoom-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .zoom-btn {
-            background-color: #6272a4;
-            color: #f8f8f2;
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .zoom-btn:hover {
-            background-color: #44475a;
-        }
-        .zoom-level {
-            min-width: 50px;
-            text-align: center;
-        }
-        .editor-container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            background-color: #282a36;
-            border-radius: 4px;
-        }
-        .editor-header {
-            background-color: #44475a;
-            padding: 8px 15px;
-            border-radius: 4px 4px 0 0;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .editor-content {
-            flex: 1;
-            overflow: auto;
-            padding: 15px;
-            font-size: 14px; /* Default font size */
-        }
-        pre {
-            margin: 0;
-            min-width: fit-content;
-        }
-        code {
-            display: block;
-            white-space: pre;
-        }
-        .loading {
-            color: #6272a4;
-            font-style: italic;
-        }
-        .error {
-            color: #ff5555;
-        }
-        .status {
-            padding: 8px 15px;
-            background-color: #44475a;
-            border-radius: 0 0 4px 4px;
-            font-size: 0.8rem;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Code Viewer - index.html</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-okaidia.min.css" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg-color: #0d1117;
+      --panel-bg: #0a0f1a;
+      --accent: #2f81f7;
+      --border-color: #30363d;
+      --text-color: #c9d1d9;
+      --dim-text: #8b949e;
+      --button-bg: #21262d;
+      --button-hover: #30363d;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+      gap: 10px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: var(--text-color);
+    }
+
+    .zoom-controls {
+      display: flex;
+      gap: 8px;
+    }
+
+    .zoom-btn, .run-btn {
+      background-color: var(--button-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .zoom-btn:hover,
+    .run-btn:hover {
+      background-color: var(--button-hover);
+    }
+
+    .run-btn {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      font-weight: bold;
+    }
+
+    .run-btn:hover {
+      background-color: #1f6feb;
+    }
+
+    .editor-container {
+      flex: 1;
+      background-color: var(--panel-bg);
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .editor-header {
+      padding: 10px 15px;
+      background-color: var(--button-bg);
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.9rem;
+      color: var(--dim-text);
+    }
+
+    .editor-content {
+      flex: 1;
+      overflow: auto;
+      padding: 15px;
+      font-size: 14px;
+    }
+
+    pre {
+      margin: 0;
+    }
+
+    .status {
+      padding: 10px 15px;
+      background-color: var(--button-bg);
+      border-top: 1px solid var(--border-color);
+      font-size: 0.85rem;
+      color: var(--dim-text);
+    }
+
+    .error {
+      color: #ff7b72;
+    }
+
+    /* Ensure Prism uses the dark background */
+    pre[class*="language-"],
+    code[class*="language-"] {
+      background: transparent !important;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div>
-                <h1>Simon's Code Reader</h1>
-                <h1>Content of <span id="filename">index.html</span></h1>
-            </div>
-            <div class="zoom-controls">
-                <button class="zoom-btn" id="zoomOut">-</button>
-                <span class="zoom-level" id="zoomLevel">100%</span>
-                <button class="zoom-btn" id="zoomIn">+</button>
-                <button class="zoom-btn" id="resetZoom">Reset</button>
-            </div>
-        </div>
-        
-        <div class="editor-container">
-            <div class="editor-header">
-                <span id="fileInfo">Loading...</span>
-            </div>
-            <div class="editor-content" id="editorContent">
-                <pre><code id="fileContent" class="language-markup loading">Loading index.html...</code></pre>
-            </div>
-            <div class="status" id="status">Ready</div>
-        </div>
+  <div class="container">
+    <div class="header">
+      <div>
+        <h1>Simon's Code Reader</h1>
+        <h1>Content of <span id="filename">index.html</span></h1>
+      </div>
+      <div class="zoom-controls">
+        <button class="zoom-btn" id="zoomOut">-</button>
+        <span id="zoomLevel">100%</span>
+        <button class="zoom-btn" id="zoomIn">+</button>
+        <button class="zoom-btn" id="resetZoom">Reset</button>
+        <button class="run-btn" onclick="window.open('https://symoh05.github.io/index.html', '_blank')">Run</button>
+      </div>
     </div>
 
-    <!-- Prism.js for syntax highlighting -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-markup.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-css.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-javascript.min.js"></script>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const fileContent = document.getElementById('fileContent');
-            const filenameElement = document.getElementById('filename');
-            const fileInfoElement = document.getElementById('fileInfo');
-            const statusElement = document.getElementById('status');
-            const editorContent = document.getElementById('editorContent');
-            const zoomOutBtn = document.getElementById('zoomOut');
-            const zoomInBtn = document.getElementById('zoomIn');
-            const resetZoomBtn = document.getElementById('resetZoom');
-            const zoomLevel = document.getElementById('zoomLevel');
-            
-            // Zoom functionality
-            let currentZoom = 100;
-            const ZOOM_STEP = 10;
-            const MIN_ZOOM = 50;
-            const MAX_ZOOM = 200;
-            const DEFAULT_ZOOM = 100;
-            
-            function updateZoom() {
-                editorContent.style.fontSize = currentZoom + '%';
-                zoomLevel.textContent = currentZoom + '%';
-                
-                // Store zoom level in localStorage
-                localStorage.setItem('codeViewerZoom', currentZoom);
-            }
-            
-            zoomOutBtn.addEventListener('click', function() {
-                if (currentZoom > MIN_ZOOM) {
-                    currentZoom -= ZOOM_STEP;
-                    updateZoom();
-                }
-            });
-            
-            zoomInBtn.addEventListener('click', function() {
-                if (currentZoom < MAX_ZOOM) {
-                    currentZoom += ZOOM_STEP;
-                    updateZoom();
-                }
-            });
-            
-            resetZoomBtn.addEventListener('click', function() {
-                currentZoom = DEFAULT_ZOOM;
-                updateZoom();
-            });
-            
-            // Load saved zoom level if available
-            const savedZoom = localStorage.getItem('codeViewerZoom');
-            if (savedZoom) {
-                currentZoom = parseInt(savedZoom);
-                updateZoom();
-            }
-            
-            // Show loading state
-            statusElement.textContent = "Loading index.html...";
-            
-            // Load index.html from the same directory with performance improvements
-            function loadFile() {
-                fetch('index.html?' + new Date().getTime()) // Cache buster
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('File not found (HTTP ' + response.status + ')');
-                        }
-                        const contentLength = response.headers.get('Content-Length');
-                        fileInfoElement.textContent = `index.html ${contentLength ? `(${Math.round(contentLength/1024)} KB)` : ''}`;
-                        return response.text();
-                    })
-                    .then(content => {
-                        // Process in chunks to avoid blocking UI
-                        processContentInChunks(content, 10000);
-                    })
-                    .catch(error => {
-                        fileContent.textContent = 'Error loading index.html: ' + error.message;
-                        fileContent.className = 'error';
-                        statusElement.textContent = "Error loading file";
-                        console.error(error);
-                    });
-            }
-            
-            // Process content in chunks to prevent UI freezing
-            function processContentInChunks(content, chunkSize) {
-                statusElement.textContent = "Processing file...";
-                fileContent.textContent = '';
-                fileContent.className = 'language-markup';
-                
-                let position = 0;
-                const totalChunks = Math.ceil(content.length / chunkSize);
-                let chunksProcessed = 0;
-                
-                function processNextChunk() {
-                    if (position >= content.length) {
-                        // Finished processing
-                        Prism.highlightElement(fileContent);
-                        statusElement.textContent = `Loaded ${Math.round(content.length/1024)} KB`;
-                        return;
-                    }
-                    
-                    const chunk = content.substr(position, chunkSize);
-                    fileContent.textContent += chunk;
-                    position += chunkSize;
-                    chunksProcessed++;
-                    
-                    // Update status periodically
-                    if (chunksProcessed % 5 === 0) {
-                        statusElement.textContent = `Processing... ${Math.round(position/content.length*100)}%`;
-                    }
-                    
-                    // Process next chunk on the next event loop iteration
-                    setTimeout(processNextChunk, 0);
-                }
-                
-                processNextChunk();
-            }
-            
-            // Initial load
-            loadFile();
-            
-            // Add resize observer to ensure proper layout
-            new ResizeObserver(() => {
-                Prism.highlightElement(fileContent);
-            }).observe(document.querySelector('.editor-content'));
+    <div class="editor-container">
+      <div class="editor-header" id="fileInfo">Loading...</div>
+      <div class="editor-content" id="editorContent">
+        <pre><code id="fileContent" class="language-html loading">Loading index.html...</code></pre>
+      </div>
+      <div class="status" id="status">Ready</div>
+    </div>
+  </div>
+
+  <!-- Prism core -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+  <!-- Prism components -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-markup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-javascript.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const fileContent = document.getElementById('fileContent');
+      const fileInfoElement = document.getElementById('fileInfo');
+      const statusElement = document.getElementById('status');
+      const editorContent = document.getElementById('editorContent');
+      const zoomOutBtn = document.getElementById('zoomOut');
+      const zoomInBtn = document.getElementById('zoomIn');
+      const resetZoomBtn = document.getElementById('resetZoom');
+      const zoomLevel = document.getElementById('zoomLevel');
+
+      let currentZoom = 100;
+      const ZOOM_STEP = 10;
+      const MIN_ZOOM = 50;
+      const MAX_ZOOM = 200;
+
+      function updateZoom() {
+        editorContent.style.fontSize = currentZoom + '%';
+        zoomLevel.textContent = currentZoom + '%';
+        localStorage.setItem('codeViewerZoom', currentZoom);
+      }
+
+      zoomOutBtn.addEventListener('click', () => {
+        if (currentZoom > MIN_ZOOM) {
+          currentZoom -= ZOOM_STEP;
+          updateZoom();
+        }
+      });
+
+      zoomInBtn.addEventListener('click', () => {
+        if (currentZoom < MAX_ZOOM) {
+          currentZoom += ZOOM_STEP;
+          updateZoom();
+        }
+      });
+
+      resetZoomBtn.addEventListener('click', () => {
+        currentZoom = 100;
+        updateZoom();
+      });
+
+      const savedZoom = localStorage.getItem('codeViewerZoom');
+      if (savedZoom) {
+        currentZoom = parseInt(savedZoom, 10);
+        updateZoom();
+      }
+
+      statusElement.textContent = 'Loading index.html...';
+
+      fetch('index.html?' + Date.now())
+        .then(res => {
+          if (!res.ok) throw new Error('File not found (HTTP ' + res.status + ')');
+          const contentLength = res.headers.get('Content-Length');
+          fileInfoElement.textContent = `index.html ${contentLength ? `(${Math.round(contentLength / 1024)} KB)` : ''}`;
+          return res.text();
+        })
+        .then(text => {
+          fileContent.textContent = text;
+
+          // Infer file type and update class
+          const fileName = 'index.html'; // Replace with dynamic if needed
+          if (fileName.endsWith('.css')) {
+            fileContent.className = 'language-css';
+          } else if (fileName.endsWith('.js')) {
+            fileContent.className = 'language-javascript';
+          } else {
+            fileContent.className = 'language-html';
+          }
+
+          Prism.highlightElement(fileContent);
+          statusElement.textContent = `Loaded ${Math.round(text.length / 1024)} KB`;
+        })
+        .catch(err => {
+          fileContent.textContent = 'Error loading index.html: ' + err.message;
+          fileContent.className = 'error';
+          statusElement.textContent = 'Error loading file';
         });
-    </script>
+    });
+  </script>
 </body>
 </html>
